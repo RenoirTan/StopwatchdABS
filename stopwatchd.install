@@ -1,0 +1,9 @@
+#!/hint/bash
+
+pre_upgrade() {
+    systemctl stop stopwatchd.service
+}
+
+pre_remove() {
+    systemctl stop stopwatchd.service
+}

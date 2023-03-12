@@ -1,0 +1,45 @@
+_pkgname='stopwatchd'
+pkgname="${_pkgname}"
+pkgver='0.1.0'
+pkgrel=1
+pkgdesc="Stopwatch daemon in the terminal."
+arch=('x86_64')
+_repo="https://github.com/RenoirTan/Stopwatchd"
+url="${repo}"
+license=('custom')
+depends=('systemd')
+makedepends=('cargo')
+checkdepends=('cargo')
+#optdepends=()
+#provides=()
+#conflicts=()
+#replaces=()
+install='../stopwatchd.install'
+_srcdir="Stopwatchd-${pkgver}"
+source=("${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('d1273a5407ff489a774d1b451c4f94d82173a809b10072c5656eabba374f353c')
+
+build() {
+    cd "${srcdir}/${_srcdir}"
+
+    cargo build --release
+    scripts/mk-systemd-service -p '/usr' -o './out'
+}
+
+check() {
+    cd "${srcdir}/${_srcdir}"
+
+    cargo test --release
+}
+
+package() {
+    cd "${srcdir}/${_srcdir}"
+
+    install -Dm 755 './target/release/swd' "${pkgdir}/usr/bin/swd"
+    install -Dm 755 './target/release/swctl' "${pkgdir}/usr/bin/swctl"
+
+    install -Dm 644 './out/stopwatchd.service' \
+        "${pkgdir}/usr/lib/systemd/system/stopwatchd.service"
+    
+    install -Dm 644 './README.md' "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+}

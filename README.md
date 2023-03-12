@@ -1,0 +1,2 @@
+# StopwatchdABS
+PKGBUILDs for Stopwatchd

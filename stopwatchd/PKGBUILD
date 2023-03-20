@@ -1,6 +1,6 @@
 _pkgname='stopwatchd'
 pkgname="${_pkgname}"
-pkgver='0.1.0'
+pkgver='0.2.0'
 pkgrel=1
 pkgdesc="Stopwatch daemon in the terminal."
 arch=('x86_64')
@@ -17,7 +17,7 @@ checkdepends=('cargo')
 install='../stopwatchd.install'
 _srcdir="Stopwatchd-${pkgver}"
 source=("${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('d1273a5407ff489a774d1b451c4f94d82173a809b10072c5656eabba374f353c')
+sha256sums=('7609d075ab5d793cc744c1b3763b7219978de5abf0396753476ed54c842ca8e4')
 
 build() {
     cd "${srcdir}/${_srcdir}"
@@ -42,4 +42,6 @@ package() {
         "${pkgdir}/usr/lib/systemd/system/stopwatchd.service"
     
     install -Dm 644 './README.md' "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+
+    install -Dm 644 './res/conf/swd.toml' "${pkgdir}/etc/stopwatchd/swd.toml"
 }

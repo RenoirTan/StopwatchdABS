@@ -1,19 +1,21 @@
+# Maintainer: RenoirTan
 _pkgname='stopwatchd'
 pkgname="${_pkgname}"
 pkgver='0.2.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Stopwatch daemon in the terminal."
 arch=('x86_64')
 _repo="https://github.com/RenoirTan/Stopwatchd"
 url="${repo}"
 license=('custom')
-depends=('systemd')
+depends=('systemd' 'glibc' 'gcc-libs')
 makedepends=('cargo')
 checkdepends=('cargo')
 #optdepends=()
 #provides=()
 #conflicts=()
 #replaces=()
+backup=('etc/stopwatchd/swd.conf')
 install='../stopwatchd.install'
 _srcdir="Stopwatchd-${pkgver}"
 source=("${_repo}/archive/refs/tags/v${pkgver}.tar.gz")

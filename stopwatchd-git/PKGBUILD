@@ -22,7 +22,6 @@ source=("${_srcdir}::git+${_repo}.git")
 sha256sums=('SKIP')
 
 _vars() {
-    export pkgname="${_pkgname}"
     export features="default"
     export use_systemd=1
     export prefix='/usr'

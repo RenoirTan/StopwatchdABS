@@ -2,7 +2,7 @@
 _pkgname='stopwatchd'
 pkgname="${_pkgname}-git"
 pkgver=r180.5ae04b5
-pkgrel=1
+pkgrel=2
 pkgdesc="Stopwatch daemon in the terminal."
 arch=('x86_64')
 _repo="https://github.com/RenoirTan/Stopwatchd"
@@ -21,10 +21,8 @@ _srcdir="Stopwatchd"
 source=("${_srcdir}::git+${_repo}.git")
 sha256sums=('SKIP')
 
-_vars() {
-    export features="default"
-    export use_systemd=1
-    export prefix='/usr'
+_run_with_vars() {
+    pkgname="${_pkgname}" features="default" use_systemd=1 prefix='/usr' pkgdir="${pkgdir}" $@
 }
 
 pkgver() {
@@ -35,19 +33,17 @@ pkgver() {
 build() {
     cd "${srcdir}/${_srcdir}"
 
-    _vars
-    ./scripts/build
+    _run_with_vars ./scripts/build
 }
 
 check() {
     cd "${srcdir}/${_srcdir}"
 
-    cargo test --release
+    _run_with_vars cargo test --release
 }
 
 package() {
     cd "${srcdir}/${_srcdir}"
 
-    _vars
-    pkgdir="${pkgdir}" ./scripts/package
+    _run_with_vars ./scripts/package
 }

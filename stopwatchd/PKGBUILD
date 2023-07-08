@@ -2,7 +2,7 @@
 _pkgname='stopwatchd'
 pkgname="${_pkgname}"
 pkgver='0.4.1'
-pkgrel=2
+pkgrel=1
 pkgdesc="Stopwatch daemon in the terminal."
 arch=('x86_64')
 _repo="https://github.com/RenoirTan/Stopwatchd"

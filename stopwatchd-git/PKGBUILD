@@ -1,8 +1,8 @@
 # Maintainer: RenoirTan
 _pkgname='stopwatchd'
 pkgname="${_pkgname}-git"
-pkgver=r180.5ae04b5
-pkgrel=2
+pkgver=r241.3200d90
+pkgrel=1
 pkgdesc="Stopwatch daemon in the terminal."
 arch=('x86_64')
 _repo="https://github.com/RenoirTan/Stopwatchd"

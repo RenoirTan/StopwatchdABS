@@ -1,7 +1,7 @@
 # Maintainer: RenoirTan
 _pkgname='stopwatchd'
 pkgname="${_pkgname}"
-pkgver='0.2.0'
+pkgver='0.4.1'
 pkgrel=2
 pkgdesc="Stopwatch daemon in the terminal."
 arch=('x86_64')
@@ -19,7 +19,7 @@ backup=('etc/stopwatchd/swd.conf')
 install='../stopwatchd.install'
 _srcdir="Stopwatchd-${pkgver}"
 source=("${_repo}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('7609d075ab5d793cc744c1b3763b7219978de5abf0396753476ed54c842ca8e4')
+sha256sums=('baab2b7cba7cf85c65e1cb94ab972e7ded46dc65a552d167fab622e3c5791caf')
 
 build() {
     cd "${srcdir}/${_srcdir}"
